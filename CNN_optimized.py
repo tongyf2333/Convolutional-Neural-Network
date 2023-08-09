@@ -17,37 +17,6 @@ class CNN:
         self.rate=rate
     
     def build(self,batch):
-        """layer1=np.zeros((batch,1,28,28))
-        kernel1=np.random.randn(3,1,5,5)*np.sqrt(2.0/(1*28*28+3*24*24))
-        b1=np.zeros((3,1))+0.2
-        self.layers.append(conv(layer1,kernel1,b1))
-        
-        layer2=np.zeros((batch,3,24,24))
-        self.layers.append(bn(layer2))
-        self.layers.append(relu(layer2))
-        self.layers.append(maxpool(layer2,2))
-        
-        layer3=np.zeros((batch,3,12,12))
-        kernel2=np.random.randn(6,3,5,5)*np.sqrt(2.0/(3*12*12+6*8*8))
-        b2=np.zeros((6,1))+0.2
-        self.layers.append(conv(layer3,kernel2,b2))
-        
-        layer4=np.zeros((batch,6,8,8))
-        self.layers.append(bn(layer4))
-        self.layers.append(relu(layer4))
-        self.layers.append(maxpool(layer4,2))
-        
-        layer5=np.zeros((batch,6,4,4))
-        self.layers.append(flatten(layer5))
-        
-        layer6=np.zeros((96,batch))
-        kernel3=np.random.randn(10,96)*np.sqrt(2.0/106)
-        b3=np.zeros((10,1))+0.2
-        self.layers.append(fc(layer6,kernel3,b3))
-        
-        layer7=np.zeros((10,batch))
-        self.layers.append(bn_linear(layer7))
-        self.layers.append(softmax(layer7))"""
         layer1=np.zeros((batch,1,28,28))
         kernel1=np.random.randn(16,1,3,3)*np.sqrt(2.0/(1*28*28+16*26*26))
         b1=np.zeros((16,1))

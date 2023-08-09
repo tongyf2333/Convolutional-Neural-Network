@@ -7,38 +7,21 @@ class bn:
         self.beta=0
         self.dgamma=np.zeros_like(self.gamma)
         self.dbeta=0
-        self.momentum=0.9
         self.eps=1e-5
         N,c,h,w=input.shape
-        self.bn_param={
-            'running_mean':np.zeros((c,h,w)),
-            'running_var':np.zeros((c,h,w))
-        }
         
     def forward(self,input):
         # read some useful parameter
         self.input=input
         N, c,h,w = input.shape
-        running_mean = self.bn_param.get('running_mean', np.zeros((c,h,w), dtype=input.dtype))
-        running_var = self.bn_param.get('running_var', np.zeros((c,h,w), dtype=input.dtype))
-
         # BN forward pass
         sample_mean = input.mean(axis=0)
         sample_var = input.var(axis=0)
         x_ = (input - sample_mean) / np.sqrt(sample_var + self.eps)
         out = self.gamma * x_ + self.beta
-
-        # update moving average
-        running_mean = self.momentum * running_mean + (1-self.momentum) * sample_mean
-        running_var = self.momentum * running_var + (1-self.momentum) * sample_var
-        self.bn_param['running_mean'] = running_mean
-        self.bn_param['running_var'] = running_var
-
         # storage variables for backward pass
         self.cache = (x_, self.gamma, input - sample_mean, sample_var + self.eps)
-        
         self.out=out
-
         return out
 
 

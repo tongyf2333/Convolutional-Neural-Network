@@ -49,32 +49,3 @@ class conv:
         dx=dim(dx_cols,tmp,batch,channel,H,W,h,w,self.stride)
         
         return dx
-    
-def check():
-    input=np.zeros((1,3,3,3))
-    for i in range(3):
-        for j in range(3):
-            for k in range(3):
-                input[0,i,j,k]=i*9+j*3+k
-                
-    kernel=np.zeros((1,3,2,2))
-    for i in range(3):
-        for j in range(2):
-            for k in range(2):
-                kernel[0,i,j,k]=i*4+j*2+k
-                
-    a=conv(input,kernel,np.zeros((1,1)))
-    
-    b=a.forward(input)
-    
-    gradient=np.zeros((1,1,2,2))
-    for i in range(2):
-        for j in range(2):
-            gradient[0,0,i,j]=i*2+j+1
-            
-    c=a.backward(gradient)
-    
-    print(gradient)
-    print(c)
-    
-#check()
