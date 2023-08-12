@@ -8,4 +8,6 @@
 
 当前mnist测试集准确率：98.49%
 
-正在写RNN
+正在写RNN[已经写完辣](https://github.com/tongyf2333/Long-short-term-memory/tree/master)
+
+update2023.8.13：修复了CNN_optimized.py中test函数的bug
