@@ -63,6 +63,7 @@ class CNN:
             i-=1
             
     def test(self,X,Y):
+        X=np.arctan(X)*(2/np.pi)
         batch=X.shape[0]
         res=0
         num=len(self.layers)
